@@ -17,6 +17,7 @@ allprojects {
 
     dependencies {
         implementation(kotlin("stdlib"))
+        implementation("com.michael-bull.kotlin-result:kotlin-result:1.1.12")
 
         testImplementation(platform("org.junit:junit-bom:5.7.2"))
         testImplementation("org.junit.jupiter:junit-jupiter")

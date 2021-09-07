@@ -11,7 +11,7 @@ class UsersFacade(repository: UsersRepository) {
         return createUserUseCase.execute(request)
     }
 
-    fun getUser(request: GetUserRequest): UserDto {
+    fun getUser(request: GetUserRequest): GetUserResponse {
         return getUserUseCase.execute(request)
     }
 }
