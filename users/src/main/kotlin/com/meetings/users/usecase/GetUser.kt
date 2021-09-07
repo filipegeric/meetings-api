@@ -9,7 +9,7 @@ data class GetUserRequest(val id: String)
 class UserNotFound : Throwable()
 typealias GetUserResponse = Result<UserDto, Throwable>
 
-class GetUser(private val repository: UsersRepository) {
+internal class GetUser(private val repository: UsersRepository) {
     fun execute(request: GetUserRequest): GetUserResponse {
         val user = repository.findOne(request.id) ?: return Err(UserNotFound())
         return Ok(user.toDto())

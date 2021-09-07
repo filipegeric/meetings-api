@@ -34,7 +34,7 @@ class CreateUserTests {
         usersFacade.createUser(request)
 
         val expected = UserDto("an-id", "example@mail.com")
-        val actual = usersFacade.getUser(GetUserRequest("an-id"))
+        val (actual) = usersFacade.getUser(GetUserRequest("an-id"))
         assertEquals(expected, actual)
     }
 }

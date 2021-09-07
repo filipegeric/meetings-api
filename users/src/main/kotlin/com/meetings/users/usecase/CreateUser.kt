@@ -9,7 +9,7 @@ data class UserDto(val id: String, val email: String)
 
 fun User.toDto(): UserDto = UserDto(id, email)
 
-class CreateUser(private val repository: UsersRepository) {
+internal class CreateUser(private val repository: UsersRepository) {
     fun execute(request: CreateUserRequest): CreateUserResponse {
         val (id, email) = request
         val user = repository.save(User(id, email))
