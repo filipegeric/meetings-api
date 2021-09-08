@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-    mainClass.set("you.advice.rest.MainKt")
+    mainClass.set("com.meetings.api.MainKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
