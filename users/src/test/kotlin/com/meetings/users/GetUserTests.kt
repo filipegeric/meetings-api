@@ -22,7 +22,7 @@ class GetUserTests {
     fun `returns proper error if user is not previously created`() {
         val (userDto, error) = usersFacade.getUser(GetUserRequest("non-existing"))
         assertNull(userDto)
-        assertEquals(UserNotFound, error)
+        assertEquals(UserNotFound("non-existing"), error)
     }
 
     @Test
