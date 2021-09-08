@@ -19,10 +19,11 @@ fun main() {
 
 private fun setupDatabase(): Database = Database(
     DatabaseConfig(
-        connectionString = "jdbc:postgresql://localhost:5432/meetings-db",
+        url = "jdbc:postgresql://localhost:5432/meetings-db",
         driver = "org.postgresql.Driver",
         user = "dev",
-        password = "dev"
+        password = "dev",
+        runMigrations = true
     )
 )
 
