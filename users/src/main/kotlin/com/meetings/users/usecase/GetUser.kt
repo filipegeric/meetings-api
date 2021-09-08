@@ -6,12 +6,13 @@ import com.github.michaelbull.result.Result
 import com.meetings.users.port.UsersRepository
 
 data class GetUserRequest(val id: String)
-object UserNotFound : Throwable()
+data class UserNotFound(val id: String) : Throwable()
 typealias GetUserResponse = Result<UserDto, Throwable>
 
 internal class GetUser(private val repository: UsersRepository) {
     fun execute(request: GetUserRequest): GetUserResponse {
-        val user = repository.findOne(request.id) ?: return Err(UserNotFound)
+        val id = request.id
+        val user = repository.findOne(id) ?: return Err(UserNotFound(id))
         return Ok(user.toDto())
     }
 }
