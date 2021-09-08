@@ -1,0 +1,8 @@
+server:
+  port: 3000
+
+database:
+  url: "jdbc:postgresql://localhost:5432/meetings-db"
+  driver: "org.postgresql.Driver"
+  user: "dev"
+  password: "dev"

@@ -19,6 +19,9 @@ dependencies {
     implementation("io.ktor:ktor-jackson:$ktorVersion")
     implementation("ch.qos.logback:logback-classic:1.2.5")
 
+    implementation("com.sksamuel.hoplite:hoplite-core:1.4.7")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:1.4.7")
+
     implementation(project(":database"))
     implementation(project(":users"))
 
