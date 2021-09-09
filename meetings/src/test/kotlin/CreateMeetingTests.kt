@@ -20,11 +20,18 @@ class CreateMeetingTests {
         meetingsFacade = MeetingsFacade(MemoryMeetingsRepository(), UuidGenerator())
     }
 
+    private fun createMeetingRequest(
+        title: String = "Title",
+        description: String = "Description",
+        timeSlots: List<String> = listOf("2020-01-01T12:00:00Z"),
+        invitations: List<String> = listOf("example@mail.com")
+    ) = CreateMeetingRequest(
+        title, description, timeSlots, invitations
+    )
+
     @Test
     fun `returns proper error if title is empty`() {
-        val request = CreateMeetingRequest(
-            "", "", emptyList(), emptyList(),
-        )
+        val request = createMeetingRequest(title = "")
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -34,9 +41,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns proper error if description is empty`() {
-        val request = CreateMeetingRequest(
-            "Title", "", emptyList(), emptyList(),
-        )
+        val request = createMeetingRequest(description = "")
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -46,9 +51,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns proper error if timeSlots is empty list`() {
-        val request = CreateMeetingRequest(
-            "Title", "Desc", emptyList(), emptyList(),
-        )
+        val request = createMeetingRequest(timeSlots = emptyList())
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -58,9 +61,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns proper error if timeSlots contains invalid elements`() {
-        val request = CreateMeetingRequest(
-            "Title", "Desc", listOf("invalid-date"), emptyList(),
-        )
+        val request = createMeetingRequest(timeSlots = listOf("invalid-date"))
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -70,9 +71,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns proper error if invitations is empty list`() {
-        val request = CreateMeetingRequest(
-            "Title", "Desc", listOf("2020-01-01T12:00:00Z"), emptyList(),
-        )
+        val request = createMeetingRequest(invitations = emptyList())
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -82,9 +81,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns proper error if invitations contains invalid emails`() {
-        val request = CreateMeetingRequest(
-            "Title", "Desc", listOf("2020-01-01T12:00:00Z"), listOf("valid@mail.com", "invalid"),
-        )
+        val request = createMeetingRequest(invitations = listOf("valid@mail.com", "invalid"))
 
         val (result, error) = meetingsFacade.createMeeting(request, actor)
 
@@ -94,7 +91,7 @@ class CreateMeetingTests {
 
     @Test
     fun `returns created meeting`() {
-        val request = CreateMeetingRequest(
+        val request = createMeetingRequest(
             "Title", "Desc", listOf("2020-01-01T12:00:00+03:00"), listOf("valid@mail.com")
         )
 
