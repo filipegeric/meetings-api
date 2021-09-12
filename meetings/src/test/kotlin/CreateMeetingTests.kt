@@ -17,7 +17,7 @@ class CreateMeetingTests {
 
     @BeforeEach
     fun init() {
-        meetingsFacade = MeetingsFacade(MemoryMeetingsRepository(), UuidGenerator())
+        meetingsFacade = MeetingsFacade(MemoryMeetingsRepository(), UuidGenerator)
     }
 
     private fun createMeetingRequest(
