@@ -22,7 +22,11 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-core:1.4.7")
     implementation("com.sksamuel.hoplite:hoplite-yaml:1.4.7")
 
+    implementation("com.google.firebase:firebase-admin:8.0.1")
+
     implementation(project(":database"))
     implementation(project(":users"))
+    implementation(project(":meetings"))
+    implementation(project(":common"))
 
 }
