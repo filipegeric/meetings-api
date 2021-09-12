@@ -1,6 +1,8 @@
 package com.meetings.database
 
+import com.meetings.database.meetings.ExposedMeetingsRepository
 import com.meetings.database.users.ExposedUsersRepository
+import com.meetings.port.MeetingsRepository
 import com.meetings.users.port.UsersRepository
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
@@ -15,6 +17,7 @@ data class DatabaseConfig(
 
 class Database(private val config: DatabaseConfig) {
     val usersRepository: UsersRepository = ExposedUsersRepository()
+    val meetingsRepository: MeetingsRepository = ExposedMeetingsRepository()
 
     fun connect() {
         val (url, driver, user, password, runMigrations) = config

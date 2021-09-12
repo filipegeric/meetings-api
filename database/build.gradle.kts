@@ -14,6 +14,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("org.flywaydb:flyway-core:7.15.0")
 
+    implementation(project(":common"))
     implementation(project(":users"))
     implementation(project(":meetings"))
 }
