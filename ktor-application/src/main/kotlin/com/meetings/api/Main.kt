@@ -27,8 +27,3 @@ fun initFirebase() {
     val options = FirebaseOptions.builder().setCredentials(credentials).build()
     FirebaseApp.initializeApp(options)
 }
-
-
-
-
-
