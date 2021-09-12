@@ -11,6 +11,9 @@ internal object Meetings : Table() {
     val creatorId = varchar("creatorId", 50)
     val creatorEmail = varchar("creatorEmail", 254)
 
+    override val primaryKey
+        get() = PrimaryKey(id)
+
     fun insert(meeting: Meeting) = insert {
         it[id] = meeting.id
         it[title] = meeting.title
